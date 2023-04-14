@@ -1,20 +1,29 @@
 package org.example;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class SiteTest {
-
     @Test
-    public void IsSiteWorks()
-    {
-        System.setProperty("webdriver.firefox.driver", "/usr/bin/firedriver");
+    public void testTriangle() {
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://playground.learnqa.ru/puzzle/triangle");
+
+        WebElement surrenderButton = driver.findElement(By.xpath("//button[text()='Я сдаюсь']"));
+        Assert.assertNotNull(surrenderButton);
+        surrenderButton.click();
+
+        WebElement answerLink = driver.findElement(By.xpath("//a[text()='Ссылка на ответы']"));
+        Assert.assertNotNull(answerLink);
+
+        WebElement hideAnswersButton = driver.findElement(By.xpath("//button[text()='Спрятать ответы']"));
+        Assert.assertNotNull(hideAnswersButton);
+
+        driver.quit();
     }
 }
