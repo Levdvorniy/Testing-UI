@@ -1,15 +1,15 @@
 package org.example;
 
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SiteTest {
-    @Test
+    @org.junit.Test
     public void testTriangle() {
+
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://playground.learnqa.ru/puzzle/triangle");
@@ -26,4 +26,5 @@ public class SiteTest {
 
         driver.quit();
     }
+
 }
